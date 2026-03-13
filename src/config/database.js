@@ -8,7 +8,7 @@ const sequelize = new Sequelize(
     host: process.env.DB_HOST,  
     port: process.env.DB_PORT,  
     dialect: "mysql",           // SGBDR utlisé 
-    logging: false,             // désactive les logs SQL dans la console 
+    logging: false,             // Désactive les logs SQL dans la console 
   }
 );
 

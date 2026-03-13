@@ -2,7 +2,6 @@ const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
 
 const User = sequelize.define("User", {
-  // Colonne "id" : clé primaire, auto-incrémentée (1, 2, 3, ...)
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -13,28 +12,33 @@ const User = sequelize.define("User", {
   // C'est ce qui permet de retrouver un utilisateur quand il se reconnecte
   google_id: {
     type: DataTypes.STRING,
-    unique: true,        // pas de doublons
-    allowNull: false,    // obligatoire
+    unique: true,        // Pas de doublons
+    allowNull: false,    // Obligatoire
   },
 
-  // Colonne "email" : adresse Gmail
   email: {
     type: DataTypes.STRING,
     unique: true,
     allowNull: false,
   },
 
-  // Colonne "display_name" : le nom affiché (ex: "Hendrick")
+  // Colonne "display_name" : le nom affiché 
   display_name: {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  role: {
+    type: DataTypes.ENUM("admin", "editor", "viewer"),
+    allowNull: false,
+    defaultValue: "editor",
+  },
 
-  // Colonne "avatar_url" : URL de la photo Google (peut être null)
+  // Colonne "avatar_url" : URL de la photo Google 
   avatar_url: {
     type: DataTypes.STRING,
     allowNull: true,
   },
+  
 }, {
   tableName: "users",      // nom exact de la table en BDD
   timestamps: true,        // ajoute automatiquement "created_at" et "updated_at"
