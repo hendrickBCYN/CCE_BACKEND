@@ -13,6 +13,10 @@ const PORT = process.env.PORT || 3000;
 app.use(cors({ origin: "http://localhost:5173" }));
 app.use(express.json());
 
+// Routes
+const authRoutes = require("./routes/auth");
+app.use("/api/auth", authRoutes);
+
 // Route de test
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok", message: "CCE Backend is running" });
