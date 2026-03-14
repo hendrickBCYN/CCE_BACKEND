@@ -26,21 +26,33 @@ app.get("/api/health", (req, res) => {
 });
 
 async function start() {
-  try {
-    await sequelize.authenticate();
-    console.log("MySQL connected");
-    
-    await sequelize.sync();
-    console.log("MySQL synced");
-    
-    // Démarrage
-    app.listen(PORT, () => {
-      console.log(`CCE Backend running on http://localhost:${PORT}`);
-    });
-  } catch (error) {
-    console.error("Unable to start server", error);
+  // Au cas où MySQL met du temps à démarrer dans Docker
+  const maxRetries = 10;
+  let retries = 0;
+
+  while (retries < maxRetries) {
+    try {
+      await sequelize.authenticate();
+      console.log("MySQL connected");
+      break;
+    } catch (error) {
+      retries++;
+      console.log(`Waiting for MySQL... (${retries}/${maxRetries})`);
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+    }
+  }
+
+  if (retries === maxRetries) {
+    console.error("Unable to connect to MySQL after multiple retries");
     process.exit(1);
   }
+
+  await sequelize.sync();
+  console.log("Database synced");
+
+  app.listen(PORT, () => {
+    console.log(`CCE Backend running on http://localhost:${PORT}`);
+  });
 }
 
 start();
