@@ -10,7 +10,7 @@ router.use(authMiddleware);
 /**
  * POST /api/configurations
  * Sauvegarder une nouvelle configuration.
- */
+*/
 router.post("/", async (req, res) => {
   try {
     const { name, data } = req.body;
@@ -35,7 +35,7 @@ router.post("/", async (req, res) => {
 /**
  * GET /api/configurations
  * Lister toutes les configurations de l'utilisateur connecté.
- */
+*/
 router.get("/", async (req, res) => {
   try {
     const configurations = await Configuration.findAll({
@@ -54,7 +54,7 @@ router.get("/", async (req, res) => {
 /**
  * GET /api/configurations/:id
  * Charger une configuration par son ID.
- */
+*/
 router.get("/:id", async (req, res) => {
   try {
     const configuration = await Configuration.findOne({
@@ -78,7 +78,7 @@ router.get("/:id", async (req, res) => {
 /**
  * DELETE /api/configurations/:id
  * Supprimer une configuration.
- */
+*/
 router.delete("/:id", async (req, res) => {
   try {
     const deleted = await Configuration.destroy({

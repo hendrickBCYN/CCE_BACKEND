@@ -8,9 +8,8 @@ const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 /**
  * POST /api/auth/google
- * Reçoit le credential Google, le vérifie, crée ou retrouve
- * l'utilisateur en base, retourne un JWT applicatif.
- */
+ * Reçoit le credential Google, le vérifie, crée ou retrouvel'utilisateur en base, retourne un JWT applicatif.
+*/
 router.post("/google", async (req, res) => {
   try {
     const { credential } = req.body;
@@ -73,7 +72,7 @@ router.post("/google", async (req, res) => {
 /**
  * GET /api/auth/verify
  * Vérifie le JWT et retourne les infos utilisateur.
- */
+*/
 router.get("/verify", async (req, res) => {
   try {
     const authHeader = req.headers.authorization;

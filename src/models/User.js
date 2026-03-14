@@ -27,6 +27,8 @@ const User = sequelize.define("User", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+
+  // Colonne "role" : role assigné à l'utilisateur
   role: {
     type: DataTypes.ENUM("admin", "editor", "viewer"),
     allowNull: false,
@@ -40,9 +42,9 @@ const User = sequelize.define("User", {
   },
   
 }, {
-  tableName: "users",      // nom exact de la table en BDD
-  timestamps: true,        // ajoute automatiquement "created_at" et "updated_at"
-  underscored: true,       // utilise snake_case (created_at) au lieu de camelCase (createdAt)
+  tableName: "users",      
+  timestamps: true,        // Ajoute automatiquement "created_at" et "updated_at"
+  underscored: true,       
 });
 
 module.exports = User;

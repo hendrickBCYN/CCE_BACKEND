@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
  * Middleware qui vérifie le JWT dans le header Authorization.
  * Si valide → ajoute req.userId et passe au suivant.
  * Si invalide → retourne 401.
- */
+*/
 function authMiddleware(req, res, next) {
   try {
     const authHeader = req.headers.authorization;

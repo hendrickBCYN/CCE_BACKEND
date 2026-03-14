@@ -17,8 +17,7 @@ const Configuration = sequelize.define("Configuration", {
   },
 
   // Colonne "data" : les données de configuration en JSON
-  // C'est le contenu complet (room, cam, finish, furniture, pmr)
-  // que Unity envoie via le NetworkManager
+  // C'est le contenu complet (room, cam, finish, furniture, pmr) que Unity envoie via le NetworkManager
   data: {
     type: DataTypes.JSON,
     allowNull: false,
