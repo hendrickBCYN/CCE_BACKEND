@@ -29,7 +29,7 @@ const Configuration = sequelize.define("Configuration", {
 });
 
 // ─── Relations ────────────────────────────────────────────────
-// Une configuration appartient à un utilisateur (clé étrangère user_id)
+// Une configuration appartient à un utilisateur 
 Configuration.belongsTo(User, { foreignKey: "user_id", onDelete: "CASCADE" });
 
 // Un utilisateur peut avoir plusieurs configurations
