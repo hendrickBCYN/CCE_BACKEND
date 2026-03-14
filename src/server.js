@@ -17,6 +17,9 @@ app.use(express.json());
 const authRoutes = require("./routes/auth");
 app.use("/api/auth", authRoutes);
 
+const configRoutes = require("./routes/configurations");
+app.use("/api/configurations", configRoutes);
+
 // Route de test
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok", message: "CCE Backend is running" });
