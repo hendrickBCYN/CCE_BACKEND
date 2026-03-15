@@ -21,7 +21,7 @@ router.post("/", async (req, res) => {
 
     const configuration = await Configuration.create({
       name: name || "Sans titre",
-      data: data,
+      unityData: data,
       user_id: req.userId,
     });
 
