@@ -178,5 +178,5 @@ A dedicated `Dockerfile` is planned for the backend image build (CDA certificati
 
 ## Related Project
 
-- **Frontend**: [`cce-frontend`](https://github.com/hendrickBCYN/CCE_FRONTEND) — React 19 + Vite application with Unity WebGL integration
+- **Frontend**: [`CCE_FRONTEND`](https://github.com/hendrickBCYN/CCE_FRONTEND) — React 19 + Vite application with Unity WebGL integration
 
