@@ -2,7 +2,7 @@
 
 Node.js/Express REST API providing Google SSO authentication, user management, and configuration persistence for the **EHPAD Room Configurator (CCE)**.
 
-> **CDA Context**: this project serves as the server layer for the *Concepteur Développeur d'Applications* professional certification (RNCP Level 6, TP-01281 revision 04).
+> **CDA Context**: this project serves as the server layer for the *Concepteur Développeur d'Applications* professional certification (RNCP Level 6).
 
 
 ## Tech Stack
