@@ -176,5 +176,5 @@ services:
 
 ## Related Project
 
-- **Frontend**: [`CCE_FRONTEND`](https://github.com/hendrickBCYN/CCE_FRONTEND) — React 19 + Vite application with Unity WebGL integration
+- **Frontend**: [`CCE_FRONTEND`](https://github.com/hendrickBCYN/CCE_FRONTEND) 
 
