@@ -45,14 +45,16 @@ cp .env.example .env
 
 ## Environment Variables
 
-`PORT`: Express server listening port `3000` 
-`DB_HOST`: MySQL server host `localhost`
-`DB_PORT`: MySQL port `3306` 
-`DB_NAME`: Database name `cce_db`
-`DB_USER`: MySQL user `root`
-`DB_PASSWORD`: MySQL password *(required)*
-`JWT_SECRET`: Secret key for JWT signing *(required)*
-`GOOGLE_CLIENT_ID`: Google OAuth 2.0 Client ID *(required)*
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `PORT` | Express server listening port | `3000` |
+| `DB_HOST` | MySQL server host | `localhost` |
+| `DB_PORT` | MySQL port | `3306` |
+| `DB_NAME` | Database name | `cce_db` |
+| `DB_USER` | MySQL user | `root` |
+| `DB_PASSWORD` | MySQL password | *(required)* |
+| `JWT_SECRET` | Secret key for JWT signing | *(required)* |
+| `GOOGLE_CLIENT_ID` | Google OAuth 2.0 Client ID | *(required)* |
 
 
 ## Available Scripts
@@ -91,24 +93,28 @@ Two entities linked by a **0:N** relationship (one user owns 0 to N configuratio
 
 **USER**
 
-`id`: INT (PK, auto) Unique identifier 
-`google_id`: VARCHAR Unique Google identifier
-`email`: VARCHAR Google email address 
-`display_name`: VARCHAR Display name
-`avatar_url`: VARCHAR Google profile picture URL 
-`role`: VARCHAR User role 
-`created_at`: DATETIME Creation date
-`updated_at`: DATETIME Last update date
+| Field | Type | Description |
+|-------|------|-------------|
+| `id` | INT (PK, auto) | Unique identifier |
+| `google_id` | VARCHAR | Unique Google identifier |
+| `email` | VARCHAR | Google email address |
+| `display_name` | VARCHAR | Display name |
+| `avatar_url` | VARCHAR | Google profile picture URL |
+| `role` | VARCHAR | User role |
+| `created_at` | DATETIME | Creation date |
+| `updated_at` | DATETIME | Last update date |
 
 **CONFIGURATION**
 
-`id`: INT (PK, auto) Unique identifier 
-`user_id`: INT (FK) Reference to USER
-`name`: VARCHAR Configuration name
-`unity_data`: JSON Unity configuration data
-`is_latest`: BOOLEAN  Whether this is the most recent configuration |
-`created_at`: DATETIME  
-`updated_at`: DATETIME 
+| Field | Type | Description |
+|-------|------|-------------|
+| `id` | INT (PK, auto) | Unique identifier |
+| `user_id` | INT (FK) | Reference to USER |
+| `name` | VARCHAR | Configuration name |
+| `unity_data` | JSON | Unity configuration data |
+| `is_latest` | BOOLEAN | Whether this is the most recent configuration |
+| `created_at` | DATETIME | Creation date |
+| `updated_at` | DATETIME | Last update date | 
 
 Models are defined with **Sequelize ORM** and automatically synchronized at startup (`sequelize.sync()`).
 
@@ -117,14 +123,18 @@ Models are defined with **Sequelize ORM** and automatically synchronized at star
 
 ### Authentication
 
-`POST`: `/api/auth/google` Login via Google credential. Verifies the token with Google, creates or retrieves the user in the database, returns an application JWT + user info. 
-`GET`: `/api/auth/verify` Verifies JWT validity. Returns user info if the token is valid.
+| Method | Route | Description | Auth Required |
+|--------|-------|-------------|:-------------:|
+| `POST` | `/api/auth/google` | Login via Google credential. Verifies the token with Google, creates or retrieves the user in the database, returns an application JWT + user info. | No |
+| `GET` | `/api/auth/verify` | Verifies JWT validity. Returns user info if the token is valid. | Yes |
 
 ### Configurations
 
-`GET`: `/api/configurations` List the authenticated user's configurations
-`GET`: `/api/configurations/:id` Retrieve a configuration by ID 
-`POST`: `/api/configurations` Create a new configuration
+| Method | Route | Description | Auth Required |
+|--------|-------|-------------|:-------------:|
+| `GET` | `/api/configurations` | List the authenticated user's configurations | Yes |
+| `GET` | `/api/configurations/:id` | Retrieve a configuration by ID | Yes |
+| `POST` | `/api/configurations` | Create a new configuration | Yes |
 
 All `/api/configurations/*` routes are protected by the `authMiddleware`, which verifies the `Authorization: Bearer <JWT>` header.
 
