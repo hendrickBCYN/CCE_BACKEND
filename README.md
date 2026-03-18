@@ -173,8 +173,6 @@ services:
       - db
 ```
 
-A dedicated `Dockerfile` is planned for the backend image build (CDA certification CP11 coverage).
-
 
 ## Related Project
 
