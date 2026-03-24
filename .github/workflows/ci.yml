@@ -22,5 +22,11 @@ jobs:
       - name: Installation des dépendances
         run: npm ci
 
+      - name: Lint 
+        run: npm run lint
+
       - name: Tests unitaires 
         run: npm run test:run
+
+      - name: Construction de l'image Docker
+        run: docker build -t cce-backend .
