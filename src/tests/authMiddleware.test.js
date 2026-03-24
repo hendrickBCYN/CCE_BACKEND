@@ -1,23 +1,22 @@
 const authMiddleware = require("../middleware/auth");
 
-describe("Middleware auth : token absent", () => {
-  it("retourne 401 si le header Authorization est manquant", () => {
-    // ── Arrange : simuler req, res, next ──────────────────
+describe("Middleware auth : token missing", () => {
+  it("Returns a 401 status code if the Authorization header is missing", () => {
+    // Mock an HTTP request without an “Authorization” header 
     const req = {
-      headers: {},    // pas de header Authorization
+      headers: {},    
     };
 
+    // Mock the Express response object
     const res = {
-      status: jest.fn().mockReturnThis(),  // res.status(401) retourne res
-      json: jest.fn(),                      // res.json({ error: ... })
+      status: jest.fn().mockReturnThis(),  
+      json: jest.fn(),                      
     };
 
     const next = jest.fn();
 
-    // ── Act : appeler le middleware ────────────────────────
     authMiddleware(req, res, next);
 
-    // ── Assert : vérifications ────────────────────────────
     expect(res.status).toHaveBeenCalledWith(401);
     expect(res.json).toHaveBeenCalledWith({ error: "Token manquant" });
     expect(next).not.toHaveBeenCalled();
